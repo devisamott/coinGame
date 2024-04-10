@@ -5,7 +5,7 @@ import { GameInfo } from '../gameInfo';
 
 export function CoinLogic() {
   const [coins, setCoins] = useState([]);
-  const [correctNumber, setCorrectNumber] = useState();
+  const [correctNumber, setCorrectNumber] = useState(null);
   const [attempts, setAttempts] = useState(3);
   const [message, setMessage] = useState('');
   const [gameStarted, setGameStarted] = useState(false);
@@ -21,6 +21,7 @@ export function CoinLogic() {
     }
     return array;
   };
+  console.log(shuffleArray);
 
   const initializeGame = () => {
     const numCoins = getRandomNumber(4, 10);
@@ -62,6 +63,7 @@ export function CoinLogic() {
 
   const onRestartGame = () => {
     setCoins([]);
+    setCorrectNumber(null)
     setAttempts(3);
     setMessage('');
     setGameStarted(false); 
@@ -69,7 +71,10 @@ export function CoinLogic() {
 
   return (
     <div>
-      <h1>Encuentra este numero: {correctNumber}</h1> 
+      <h1>Encuentra el numero oculto</h1> 
+      {gameStarted &&
+        <h1>numero oculto: {correctNumber}</h1>
+      }
       <CoinBoard coins={coins} onCoinClick={handleClick} />
       
       <GameControls 

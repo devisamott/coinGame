@@ -7,9 +7,10 @@ export function GameControls({
 }) {
   return (
     <div>
-      <button onClick={ onStartGame } disabled={ disabled }>Iniciar juego</button>
-      {disabled && < button onClick={ onRestartGame } >
-          Volver a jugar
+      <button onClick={onStartGame} disabled={disabled}>Iniciar juego</button>
+      {disabled && 
+        <button onClick={onRestartGame} >
+           Volver a jugar
         </button>
       }
     </div>
